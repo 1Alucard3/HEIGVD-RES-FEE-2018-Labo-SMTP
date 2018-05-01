@@ -31,7 +31,7 @@ public class Main {
 
         // Existing group we would like to add some victims
         if (victimGroup == 1) {
-            System.out.println("Indiquez le groupe concerné (par exemple G1 ou G13)");
+            System.out.println("Indiquez le groupe concerné (par exemple 1 ou 5)");
             String designedGroup = null;
             try {
                 designedGroup = reader.readLine();
@@ -39,6 +39,23 @@ public class Main {
                 e.printStackTrace();
             }
             System.out.println("Designed group is : " + designedGroup);
+            System.out.println("Add addresses comma separated : ");
+            String newAddresses = null;
+            try {
+                newAddresses = reader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Explode email addresses into pieces
+            List<String> emails = Arrays.asList(newAddresses.split("\\s*,\\s*"));
+            // emails.set(0, System.getProperty("line.separator") + emails.get(0));
+            Path file = Paths.get("src/victims/victims-G" + designedGroup);
+            try {
+                Files.write(file, emails, Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         } else if (victimGroup == 2) {  // Create a new group
 
@@ -56,6 +73,7 @@ public class Main {
 
             // Explode email addresses into pieces
             List<String> emails = Arrays.asList(inputStr.split("\\s*,\\s*"));
+
             Path file = Paths.get("src/victims/victims-G" + newGroupID);
             try {
                 Files.write(file, emails, Charset.forName("UTF-8"));
