@@ -1,0 +1,17 @@
+config.properties
+
+smtpServerAddress=smtp.heig-vd.ch
+smtpServerPort=25
+numberOfGroups=8
+witnessesToCC=nuno.cercaabrantessilva@heig-vd.ch
+
+
+*************************************************
+
+victims.RES.utf8
+
+cyril.debourgues@heig-vd.ch
+andre.jacquemond@heig-vd.ch
+elie.ndjolibohulu@heig-vd.ch
+raphael.racine@heig-vd.ch
+nuno.cercaabrantessilva@heig-vd.ch
