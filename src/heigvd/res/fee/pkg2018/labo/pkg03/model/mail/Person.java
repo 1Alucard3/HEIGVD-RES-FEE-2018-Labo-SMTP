@@ -1,33 +1,41 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Description: Cette classe Person permet de créer un fichier de type Person.
+ *              Un objet Person a 3 attributs; un prénom, un nom et une adresse
+ *              email. Dans cette application, les personnes sont les différentes
+ *              victimes.
+ * Fichier:     Person.java
+ * Auteurs:     Cyril de Bourgues
+ *              Nuno Miguel Cerca Abrantes Silva
+ * Date:        23.04.2018
  */
 package heigvd.res.fee.pkg2018.labo.pkg03.model.mail;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- *
- * @author migue
- */
 public class Person {
     
     private String firstName;
     private String lastName;
-    private final String address;
+    private String emailAddr;
     
-    public Person(String firstName, String lastName, String address){
+    /* Constructeur sans paramètre */
+    public Person(){}
+    
+    /* Constructeur avec les différents attributs */
+    public Person(String firstName, String lastName, String emailAddr){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
+        this.emailAddr = emailAddr;
     }
     
-    public Person(String address){
-        this.address = address;
+    /* Constructeur avec uniquement l'adresse email comme paramètre */
+    public Person(String emailAddr){
+        this.emailAddr = emailAddr;
+        
+        /* RegEx permettant de récupérer le prénom et le nom depuis l'adresse email */
         Pattern pattern = Pattern.compile("(.*)\\.(.*)@");
-        Matcher matcher = pattern.matcher(address);
+        Matcher matcher = pattern.matcher(emailAddr);
         boolean found = matcher.find();
         if(found){
             this.firstName = matcher.group(1);
@@ -37,15 +45,51 @@ public class Person {
         }
     }
     
+    /**
+     * Retourne le prénom
+     * @return 
+     */
     public String getFirstName(){
         return firstName;
     }
     
+    /**
+     * Set le prénom
+     * @param firstName 
+     */
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+    
+    /**
+     * Retourne le nom
+     * @return 
+     */
     public String getLastName(){
         return lastName;
     }
     
-    public String getAddress(){
-        return address;
+    /**
+     * Set le nom
+     * @param lastName 
+     */
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+    
+    /**
+     * Retourne l'email
+     * @return 
+     */
+    public String getEmailAddr(){
+        return emailAddr;
+    }
+    
+    /**
+     * Set l'email
+     * @param emailAddr 
+     */
+    public void setEmailAddr(String emailAddr){
+        this.emailAddr = emailAddr;
     }
 }

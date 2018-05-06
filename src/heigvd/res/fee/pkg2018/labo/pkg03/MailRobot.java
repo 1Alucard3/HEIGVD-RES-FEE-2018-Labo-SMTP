@@ -1,7 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Description: Fichier main de l'application. Cette dernière permet de
+ *              générer des emails dont l'expéditeur et les récepteurs
+ *              sont des victimes. C'est-à-dire que l'email est envoyé
+ *              au nom de quelqu'un à d'autres personnes à leur insu.
+ * Fichier:     MailRobot.java
+ * Auteurs:     Cyril de Bourgues
+ *              Nuno Miguel Cerca Abrantes Silva
+ * Date:        23.04.2018
  */
 package heigvd.res.fee.pkg2018.labo.pkg03;
 
@@ -16,36 +21,24 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
 
-/**
- *
- * @author migue
- */
 public class MailRobot {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) throws UnknownHostException, IOException {
-        //System.out.println("Bonjour, Bienvenue!!");
-        //System.out.print("Veuillez entrer le nombre de groupe de victime que vous désirez faire: ");
-        //int nbGroup;
-        //Person andre = new Person()
-        //Group victims = new Group();
-        
-        
-        ConfigurationManager cm = new ConfigurationManager();
-        
-        SmtpClient sc = new SmtpClient(cm.getSmtpServerAddress(), cm.getSmtpServerPort());
+
+        ConfigurationManager cm = new ConfigurationManager(); 
+        SmtpClient sc = new SmtpClient(cm.getSMTPServerAddr(), cm.getSMTPServerPort());
         PrankGenerator pg = new PrankGenerator(cm);
         List<Prank> lp = pg.generatePranks();
         
-        
+        /* Connexion au serveur SMTP */
         sc.connect();
         
+        /* Génère les différents emails à envoyer */
         for(Prank p : lp){
             sc.sendMessage(p.generateMailMessage());       
         }
         
+        /* Déconnexion du serveur SMTP */
         sc.disconnect();
        
     }

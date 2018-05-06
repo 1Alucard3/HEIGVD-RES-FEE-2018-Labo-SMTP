@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Description: Cette classe contient les différentes commandes SMTP ainsi que 
+ *              constantes contenant des valeurs spécifiques à SMTP.
+ * Fichier:     ProtocoleSMTP.java
+ * Auteurs:     Cyril de Bourgues
+ *              Nuno Miguel Cerca Abrantes Silva
+ * Date:        23.04.2018
  */
 package heigvd.res.fee.pkg2018.labo.pkg03.smtp;
 
@@ -21,6 +24,7 @@ public class ProtocoleSMTP {
     public final static String REP_SERVER_250 = "250";
     public final static String REP_SERVER_NOT_END_OK = "250-";
     public final static String REP_SERVER_END_OK = "250 ";
+    public final static String REP_SERVER_220 = "220 ";
     
     public final static String LINE_FEED_AND_CARRIAGE_RETURN = "\n\r";
     
